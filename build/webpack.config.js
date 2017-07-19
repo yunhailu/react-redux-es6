@@ -63,7 +63,7 @@ alias = Object.assign(alias, {
 var config = {
   context: SRC_PATH,
   entry: {
-    app: [SRC_PATH + '/pages/app.js'],
+    app: [SRC_PATH + '/app.js'],
     lib: [
       'react', 'react-dom', 'react-router',
       'redux', 'react-redux', 'redux-thunk'
@@ -136,22 +136,6 @@ if (__DEV__) {
   );
 }
 
-// 编译 sass
-// if (__DEV__) {
-//   config.module.loaders.push({
-//     test: /\.(scss|css)$/,
-//     loaders: ['style', 'css', 'postcss', 'sass']
-//   });
-// } else {
-//   config.module.loaders.push({
-//     test: /\.(scss|css)$/,
-//     loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
-//   });
-//   config.plugins.push(
-//     new ExtractTextPlugin('css/[name].[contenthash].css')
-//   );
-// }
-
 // css autoprefix
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
@@ -195,7 +179,7 @@ config.plugins.push(
   new HtmlwebpackPlugin({
     filename: 'index.html',
     chunks: ['app', 'lib'],
-    template: SRC_PATH + '/pages/app.html',
+    template: SRC_PATH + '/app.html',
     minify: __DEV__ ? false : {
       collapseWhitespace: true,
       collapseInlineTagWhitespace: true,

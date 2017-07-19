@@ -21,8 +21,7 @@
     "react",
     "es6",
     "babel",
-    "redux",
-    "boilerplate"
+    "redux"
   ],
   "author": "yunhailu",
   "license": "MIT",
