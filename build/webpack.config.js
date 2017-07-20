@@ -76,13 +76,20 @@ var config = {
     filename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js',
     chunkFilename: __DEV__ ? 'js/[name].js' : 'js/[name].[chunkhash].js'
   },
-  module: {},
+  module: {
+    // preLoaders: [{
+    //   test: /\.(js|jsx)$/,
+    //   loader: 'eslint',
+    //   // exclude: /node_modules/,
+    //   include: SRC_PATH
+    // }],
+  },
+  // eslint: {
+  //   configFile: './.eslintrc.js'
+  // },
   resolve: {
     root: SRC_PATH,
     alias: alias
-  },
-  eslint: {
-    configFile: './.eslintrc.js'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -110,8 +117,9 @@ config.module.loaders = [];
 config.module.loaders.push({
   test: /\.js$/,
   exclude: /node_modules/,
+  enforce: 'pre',
   // 这里使用 loaders ，因为后面还需要添加 loader
-  loaders: ['babel?cacheDirectory=' + CACHE_PATH, 'eslint-loader']
+  loaders: ['babel-loader']
 });
 
 // 编译 less
@@ -123,21 +131,6 @@ config.module.loaders.push({
   test: /\.less$/,
   loader: "style!css!less"
 });
-
-if (__DEV__) {
-  config.module.loaders.push({
-    test: /\.(scss|css)$/,
-    loaders: ['style', 'css', 'postcss', 'sass']
-  });
-} else {
-  config.module.loaders.push({
-    test: /\.(scss|css)$/,
-    loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
-  });
-  config.plugins.push(
-      new ExtractTextPlugin('css/[name].[contenthash].css')
-  );
-}
 
 // css autoprefix
 var precss = require('precss');

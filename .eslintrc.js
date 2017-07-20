@@ -5,11 +5,12 @@ module.exports = {
         sourceType: 'module'
     },
     // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
-    extends: 'standard',
+    // extends: 'standard',
+    extends: 'airbnb',
     // required to lint *.vue files
     plugins: [
-        // 'vuefix',
-        'html'
+        'html',
+        'react'
     ],
     // add your custom rules here
     'rules': {
@@ -60,6 +61,8 @@ module.exports = {
         "no-duplicate-case": 2,//switch中的case标签不能重复
         "no-else-return": 2,//如果if语句里面有return,后面不能跟else语句
         "no-empty": 2,//块语句中的内容不能为空
+        "no-empty-label": 0,
+        // "space-after-keywords": 0,
         "no-multi-spaces": 1,//不能用多余的空格
         "no-new": 1,//禁止在使用new构造一个实例后不赋值
         "no-spaced-func": 2,//函数调用时 函数名与()之间不能有空格
@@ -71,6 +74,17 @@ module.exports = {
         // 在进行比较时, 使用全等=== 和完全不等!== （0：不使用，2：使用）
         "eqeqeq": 0,
         // allow debugger during development
-        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+
+
+        "react/jsx-space-before-closing": 1,        // 总是在自动关闭的标签前加一个空格，正常情况下也不需要换行
+        "jsx-quotes": 1,
+        "react/jsx-closing-bracket-location": 1,    // 遵循JSX语法缩进/格式
+        "react/jsx-boolean-value": 1,               // 如果属性值为 true, 可以直接省略
+        "react/no-string-refs": 1,      // 总是在Refs里使用回调函数
+        "react/self-closing-comp": 1,    // 对于没有子元素的标签来说总是自己关闭标签
+        "react/jsx-no-bind": 1,          // 当在 render() 里使用事件处理方法时，提前在构造函数里把 this 绑定上去
+        "react/sort-comp": 1,            // 按照具体规范的React.createClass 的生命周期函数书写代码
+        "react/jsx-pascal-case": 1        // React模块名使用帕斯卡命名，实例使用骆驼式命名
     }
 }
