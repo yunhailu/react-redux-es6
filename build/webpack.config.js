@@ -81,6 +81,9 @@ var config = {
     root: SRC_PATH,
     alias: alias
   },
+  eslint: {
+    configFile: './.eslintrc.js'
+  },
   plugins: [
     new webpack.DefinePlugin({
       // http://stackoverflow.com/questions/30030031/passing-environment-dependent-variables-in-webpack
@@ -108,7 +111,7 @@ config.module.loaders.push({
   test: /\.js$/,
   exclude: /node_modules/,
   // 这里使用 loaders ，因为后面还需要添加 loader
-  loaders: ['babel?cacheDirectory=' + CACHE_PATH]
+  loaders: ['babel?cacheDirectory=' + CACHE_PATH, 'eslint-loader']
 });
 
 // 编译 less
