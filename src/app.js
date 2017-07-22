@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { Router, Route, IndexRoute, browserHistory, Link } from 'react-router';
 import reducers from 'reducers/index';
 import './css/common.less';
+import 'antd/dist/antd.less'
 import Page1 from './components/Page1/index';
 import Page2 from './components/Page2/index';
 

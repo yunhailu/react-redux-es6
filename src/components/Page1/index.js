@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import { Card, message } from 'antd';
 import './index.less';
 
 export default class Page1 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            date: '',
+        };
+    }
+    handleChange(date) {
+        message.info('您选择的日期是: ' + date.toString());
+        this.setState({ date });
+    }
     render() {
         return (
-            <div className='page1'> Page1 </div>
+            <Card title="Card title" extra={<a href="#">More</a>} style={{ width: 300 }}>
+                <p>Card content</p>
+                <p>Card content</p>
+                <p>Card content</p>
+            </Card>
         );
     }
 }
